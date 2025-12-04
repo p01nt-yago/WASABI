@@ -55,7 +55,7 @@ function add_link_files() {
             'ajax_url' => admin_url('admin-ajax.php'),
         ));
     }
-    if( is_singular('post') ) { // ニュースリリース詳細のスタイル
+    if( is_singular('post') || is_singular('seminar') || is_singular('interview') ) { // ニュースリリース詳細のスタイル
         wp_enqueue_style('single-news-css', get_stylesheet_directory_uri().'/assets/css/single-news.css');
         wp_enqueue_style('modal-css', 'https://unpkg.com/modal-video@2.4.8/css/modal-video.min.css');
         wp_enqueue_script('modal-js', 'https://unpkg.com/modal-video@2.4.8/js/modal-video.min.js', array(), '1.0.0', array('in_footer' => true, 'strategy' => 'defer'));

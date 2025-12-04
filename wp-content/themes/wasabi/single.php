@@ -39,10 +39,10 @@
 </style>
 
 <?php
-if ( $cateID == 8 ) { // インタビューカテゴリー
+if ( $cateID == 16 ) { // インタビューカテゴリー
     get_template_part('page-templates/news/news-content', 'interview');
-} elseif( $cateID == 17 ) { // セミナーカテゴリー
-    get_template_part('page-templates/news/news-content', 'seminar');
+// } elseif( $cateID == 17 ) { // セミナーカテゴリー
+//     get_template_part('page-templates/news/news-content', 'seminar');
 } else {
     get_template_part('page-templates/news/news-content', 'default');
 }

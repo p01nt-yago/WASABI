@@ -72,7 +72,7 @@ $title_encode = urlencode( get_the_title() );
                                                         </div>
                                                     EOD;
                                                 }
-                                echo '       </ul>
+                                echo '      </ul>
                                         </div>
                                     </section>';
                             }elseif($contentLayout == 'text_layout') {
@@ -89,11 +89,12 @@ $title_encode = urlencode( get_the_title() );
                                 $image = imageInfo($content['img']);
                                 $icon_url = get_template_directory_uri() . '/assets/images/common/videoStart_btn_white.svg';
                                 $video_id = extract_video_id($content['video_id']);
+                                var_dump($video_id);
                                 echo <<<EOD
                                     <div>
                                         <img class="news_content_img" src="{$image['src']}" alt="{$image['alt']}" width="{$image['width']}" height="{$image['height']}" loading="lazy">
                                         <p>{$image['caption']}</p>
-                                        <img class="js-modal-btn" src="{$icon_url}" data-video-id="{$video_id['id']}" alt="動画アイコン" width="50" height="50" loading="lazy">
+                                        <img class="js-modal-btn" src="{$icon_url}" data-video-id="{$video_id['id']}" data-channel="{$video_id['type']}" alt="動画アイコン" width="50" height="50" loading="lazy">
                                     </div>
                                 EOD;
                             }elseif($contentLayout == 'profile_layout') {
@@ -157,33 +158,42 @@ $title_encode = urlencode( get_the_title() );
 
 <script>
     document.addEventListener( 'DOMContentLoaded', function () {
-        new Splide( '.splide', {
-            type: 'loop',
-            perPage: 3,
-            perMove: 1,
-            gap: '20px',
-            arrows: false,
-            breakpoints: {
-                768: {
-                    perPage: 1,
-                },
-                1024: {
-                    perPage: 2,
-                },
-            },
-        } ).mount();
+        const slideDOMs = document.querySelectorAll('.splide');
+        if(slideDOMs){
+            slideDOMs.forEach((slideDOM => {
+                new Splide( slideDOM, {
+                    type: 'loop',
+                    perPage: 3,
+                    perMove: 1,
+                    gap: '20px',
+                    arrows: false,
+                    breakpoints: {
+                        768: {
+                            perPage: 1,
+                        },
+                        1024: {
+                            perPage: 2,
+                        },
+                    },
+                } ).mount();
+            }))
+        }
 
-
-        new ModalVideo('.js-modal-btn', {
-            youtube: {
-                autoplay: 1,
-                rel: 0,
-                showinfo: 0
-            },
-            vimeo: {
-                autoplay: 1
-            }
-        });
+        const modalVideoDOMs = document.querySelectorAll('.js-modal-btn');
+        if(modalVideoDOMs){
+            modalVideoDOMs.forEach((modalVideoDOM => {
+                new ModalVideo(`.${modalVideoDOM.className}`, {
+                    youtube: {
+                        autoplay: 1,
+                        rel: 0,
+                        showinfo: 0
+                    },
+                    vimeo: {
+                        autoplay: 1
+                    }
+                });
+            }))
+        }
 
         // URLコピー処理
         const btn = document.querySelector('.copyLinkBtn');
