@@ -1,0 +1,16 @@
+@use "abstracts/functions";
+
+.js-modal-btn{
+    cursor: pointer;
+}
+
+.news_info_cate_cate{
+    display: block;
+    border: functions.PC-pxToVw(1) solid #000;
+}
+
+.news_shareLink_wrap{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}

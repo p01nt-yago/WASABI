@@ -1,0 +1,40 @@
+.section_register{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h2{
+    font-size: 36px;
+    font-weight: bold;
+}
+
+input{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 15px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+}
+
+button{
+    background-color: #000;
+    border-radius: 5px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-top: 25px;
+    padding: 15px;
+    width: 100%;
+}
+
+.link{
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: underline;
+}

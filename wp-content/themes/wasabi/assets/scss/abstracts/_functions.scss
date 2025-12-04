@@ -1,0 +1,10 @@
+@use "sass:math";
+@use "abstracts/variables";
+
+@function PC-pxToVw($px, $base: variables.$layout-width-pc) {
+  @return math.div($px, $base) * 100vw;
+}
+
+@function SP-pxToVw($px, $base: variables.$layout-width-sp) {
+  @return math.div($px, $base) * 100vw;
+}
